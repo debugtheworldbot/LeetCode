@@ -111,3 +111,25 @@ var isValid = function(s) {
     return !arr.length
 };
 ```
+// 给定两个 没有重复元素 的数组 nums1 和 nums2 ，其中nums1 是 nums2 的子集。找到 nums1 中每个元素在 nums2 中的下一个比其大的值。
+
+```
+var nextGreaterElement = function(nums1, nums2) {
+  let stack = []
+  let res = []
+  let map = new Map()
+  let len=nums2.length
+  for(let i=len-1;i>=0;i--){
+    while(stack.length&&nums2[i]>=stack[stack.length-1]){
+      stack.pop()
+    }
+    map.set(nums2[i],stack.length?stack[stack.length-1]:-1)
+    stack.push(nums2[i])
+  }
+  nums1.forEach(i=>{
+    res.push(map.get(i))
+  })
+  return res
+  
+};
+```
