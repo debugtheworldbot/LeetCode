@@ -133,3 +133,42 @@ var nextGreaterElement = function(nums1, nums2) {
   
 };
 ```
+//请设计一个栈，除了常规栈支持的pop与push函数以外，还支持min函数，该函数返回栈元素中的最小值。执行push、pop和min操作的时间复杂度必须为O(1)。
+
+
+var MinStack = function() {
+    this.stack=[]
+    this.helpStack=[]
+    this.length=0
+};
+
+MinStack.prototype.push = function(x) {
+    const length=this.length
+        this.stack[length]=x
+    if (!length || this.helpStack[length - 1] > x) {
+        this.helpStack[length]=x
+    }else{
+        this.helpStack[length]=(this.helpStack[length-1])
+    }
+
+    this.length=length+1
+};
+
+
+MinStack.prototype.pop = function() {
+    const length=this.length
+    this.length=length-1
+    return this.stack[length-1]
+};
+
+
+MinStack.prototype.top = function() {
+    return this.stack[this.length-1]
+};
+
+
+MinStack.prototype.getMin = function() {
+    console.log(this.helpStack)
+    return this.helpStack[this.length-1]
+};
+
