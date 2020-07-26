@@ -172,9 +172,39 @@ MinStack.prototype.getMin = function() {
     return this.helpStack[this.length-1]
 };
 //输入一棵二叉树的根节点，求该树的深度。从根节点到叶节点依次经过的节点（含根、叶节点）形成树的一条路径，最长路径的长度为树的深度。
+```
 var maxDepth = function(root) {
     if(!root) return 0
     return (Math.max(maxDepth(root.left),maxDepth(root.right)))+1
     
 };
+```
 
+// 872
+```
+var leafSimilar = function(root1, root2) {
+    function getValue(root,arr){
+        if(root===null){
+            return
+        }
+        getValue(root.left,arr)
+        getValue(root.right,arr)
+        if(root.left===null&&root.right===null){
+            arr.push(root.val)
+        }
+    } 
+    let arr1=[]
+    let arr2=[]
+    getValue(root1,arr1)
+    getValue(root2,arr2)
+    if(arr2.length!==arr1.length){
+        return false
+    }
+    for(let i=0;i<arr1.length;i++){
+        if(arr1[i]!==arr2[i]){
+            return false
+        }
+    }
+    return true
+};
+```
