@@ -208,3 +208,20 @@ var leafSimilar = function(root1, root2) {
     return true
 };
 ```
+// 现在输入一个公司的所有员工信息，以及单个员工id，返回这个员工和他所有下属的重要度之和。
+var GetImportance = function(employees, id) {
+    let importance=0
+    let leader=employees.filter(i=>i[0]===id)[0]
+    importance+=leader[1]
+    console.log(importance)
+    let slaves=leader[2]
+    slaves.forEach(item=>{
+      importance+=getNumber(employees,item)
+    })
+    console.log(importance)
+};
+var getNumber=(employees, id)=>{
+    let target=employees.filter(i=>i[0]===id)[0]
+   return target[1]
+}
+GetImportance([[1,2,[2]], [2,3,[]]],2)
