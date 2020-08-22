@@ -240,3 +240,21 @@ var sortedArrayToBST = function(nums) {
     return root
 };
 ```
+// 给定一个二叉树，找出其最小深度。最小深度是从根节点到最近叶子节点的最短路径上的节点数量。
+```
+var minDepth = function(root) {
+    if(root===null){
+        return 0
+    }
+    let left=root.left
+    let right=root.right
+    if(left && right){
+        return 1 + Math.min(minDepth(left),minDepth(right))
+    }if(left){
+        return 1 + minDepth(left)
+    }if(right){
+        return 1 + minDepth(right)
+    }
+    return 1
+};
+```
