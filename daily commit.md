@@ -209,6 +209,7 @@ var leafSimilar = function(root1, root2) {
 };
 ```
 // 现在输入一个公司的所有员工信息，以及单个员工id，返回这个员工和他所有下属的重要度之和。
+```
 var GetImportance = function(employees, id) {
     let importance=0
     let leader=employees.filter(i=>i[0]===id)[0]
@@ -225,3 +226,17 @@ var getNumber=(employees, id)=>{
    return target[1]
 }
 GetImportance([[1,2,[2]], [2,3,[]]],2)
+```
+// 给定一个有序整数数组，元素各不相同且按升序排列，编写一个算法，创建一棵高度最小的二叉搜索树。
+```
+var sortedArrayToBST = function(nums) {
+    if(nums.length===0){
+        return null
+    }
+    let m = parseInt(nums.length/2)
+    let root = new TreeNode(nums[m])
+    root.left=sortedArrayToBST(nums.slice(0,m))
+    root.right=sortedArrayToBST(nums.slice(m+1))
+    return root
+};
+```
