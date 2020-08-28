@@ -292,3 +292,24 @@ var sortedArrayToBST = function(nums) {
     return helper(0,nums.length-1)
 };
 ```
+//给定一个二叉树，返回所有从根节点到叶子节点的路径。
+```
+var binaryTreePaths = function(root) {
+    let result=[]
+    var xxx=(node,payLoad)=>{
+        if(!node) return []
+        payLoad.push(node.val)
+        if(node.left===null&&node.right===null){
+            return result.push(payLoad.join('->'))
+        }
+        if(node.left){
+            xxx(node.left,[...payLoad])
+        }
+        if(node.right){
+            xxx(node.right,[...payLoad])
+        }
+    }
+    xxx(root,[])
+    return result
+}
+```
