@@ -507,3 +507,25 @@ var searchInsert = function(nums, target) {
     return n
 };
 ```
+//计算并返回 x 的平方根，其中 x 是非负整数。
+
+由于返回类型是整数，结果只保留整数的部分，小数部分将被舍去。
+```
+var mySqrt = function(x) {
+    if(x<=1)return x
+    let r = x>>>1
+    let l = 1
+    while(l+1<r){
+        let mid = (l+r)>>>1
+        if(mid*mid===x){
+            return mid
+        }
+        if(mid*mid>x){
+            r=mid
+        }else{
+            l=mid
+        }
+    }
+    return r*r>x?l:r
+};
+```
